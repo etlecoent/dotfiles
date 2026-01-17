@@ -1,0 +1,26 @@
+{
+  "model": "opusplan",
+  "permissions": {
+    "deny": [
+      "Bash(rm -rf|sudo|chmod 777:*)",
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(**/.ssh/*)",
+      "Read(**/credentials.yml.enc)",
+      "Read(**/config/master.key)",
+      "Read(**/.git/config)",
+      "Read(**/id_rsa*)",
+      "Write(**/.env)",
+      "Write(**/.env.*)",
+      "Write(**/.ssh/*)",
+      "Write(**/credentials.yml.enc)",
+      "Write(**/config/master.key)",
+      "Bash(git reset --hard|git push -f|git push --force|git clean -f|git branch -D:*)"
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh",
+    "padding": 0
+  }
+}
