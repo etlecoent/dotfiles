@@ -13,18 +13,30 @@ This is a personal dotfiles repository for managing configuration files across m
 
 ## Setup and Installation
 
-The repository uses symbolic links and configuration files to install dotfiles. Run the setup script:
+### New Machine Setup
+
+On a new machine, run the install script to clone the repo and install everything:
 ```bash
+curl -fsSL https://raw.githubusercontent.com/etlecoent/dotfiles/main/install.sh | bash
+```
+
+Or clone manually and run:
+```bash
+git clone git@github.com:etlecoent/dotfiles.git ~/dotfiles
+cd ~/dotfiles
 bash setup.sh
 ```
 
-This creates:
+### What Gets Installed
+
+The setup script automatically installs:
+- **Starship** - Prompt customization
+- **Keychain** - SSH key management (requires sudo)
+- **Claude Code** - AI coding assistant
+
+And creates:
 - `~/.zshenv` file that sources `~/dotfiles/zsh/zshrc`
 - Symlinks for SSH, Git, and Claude configurations
-
-**Prerequisites** (install manually if needed):
-- Starship prompt: `curl -sS https://starship.rs/install.sh | sh`
-- Keychain for SSH: `sudo apt install keychain`
 
 ## Architecture
 
