@@ -26,6 +26,43 @@ else
 fi
 
 echo ""
+echo "==> Setting up SSH key for GitHub..."
+mkdir -p ~/.ssh
+chmod 700 ~/.ssh
+
+if [ -f ~/.ssh/id_github ]; then
+    echo "SSH key already exists at ~/.ssh/id_github"
+else
+    echo "Generating new SSH key..."
+    ssh-keygen -t ed25519 -f ~/.ssh/id_github -C "etlecoent@gmail.com" -N ""
+    chmod 600 ~/.ssh/id_github
+    chmod 644 ~/.ssh/id_github.pub
+
+    echo ""
+    echo "SSH key generated! Public key:"
+    echo "---"
+    cat ~/.ssh/id_github.pub
+    echo "---"
+    echo ""
+    echo "Add this key to your GitHub account:"
+    echo "https://github.com/settings/ssh/new"
+    echo ""
+
+    # Try to add via GitHub CLI if available
+    if command -v gh &> /dev/null; then
+        echo "GitHub CLI detected. Would you like to add the key automatically? (y/n)"
+        read -r response
+        if [[ "$response" =~ ^[Yy]$ ]]; then
+            gh ssh-key add ~/.ssh/id_github.pub --title "$(hostname)-$(date +%Y%m%d)"
+            echo "SSH key added to GitHub!"
+        fi
+    else
+        echo "Press Enter once you've added the key to GitHub..."
+        read -r
+    fi
+fi
+
+echo ""
 echo "==> Setting up dotfiles..."
 
 # Create .zshenv to source zsh configuration

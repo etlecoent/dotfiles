@@ -35,6 +35,7 @@ The setup script automatically installs:
 - **Claude Code** - AI coding assistant
 
 And creates:
+- SSH key for GitHub (`~/.ssh/id_github`) if not present
 - `~/.zshenv` file that sources `~/dotfiles/zsh/zshrc`
 - Symlinks for SSH, Git, and Claude configurations
 
@@ -72,7 +73,9 @@ The `claude/` directory contains Claude Code customizations:
 
 ### SSH Configuration
 - GitHub SSH key: Uses `~/.ssh/id_github` for github.com connections
+- Setup script automatically generates the SSH key if not present (ed25519)
 - Keychain integration for automatic SSH key loading (configured in zshrc)
+- Supports automatic key addition to GitHub via GitHub CLI (`gh`) if available
 
 ## Important Notes
 

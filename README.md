@@ -13,8 +13,11 @@ curl -fsSL https://raw.githubusercontent.com/etlecoent/dotfiles/main/install.sh 
 This will **automatically**:
 1. Clone this repository to `~/dotfiles`
 2. Install Starship, Keychain, and Claude Code
-3. Set up all configurations and symlinks
-4. Configure your shell environment
+3. Generate SSH key for GitHub (if not already present)
+4. Set up all configurations and symlinks
+5. Configure your shell environment
+
+**Note:** When generating a new SSH key, you'll be prompted to add it to your GitHub account. You can do this manually or automatically if you have GitHub CLI (`gh`) installed.
 
 ## What's Included
 
