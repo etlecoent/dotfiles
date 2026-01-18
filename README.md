@@ -1,19 +1,20 @@
 # Dotfiles
 
-Personal configuration files for development environment setup.
+Personal configuration files for **automated development environment setup**.
 
 ## Quick Start
 
-On a new machine, run:
+On a new machine, run this single command for fully automated setup:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/etlecoent/dotfiles/main/install.sh | bash
 ```
 
-This will:
+This will **automatically**:
 1. Clone this repository to `~/dotfiles`
 2. Install Starship, Keychain, and Claude Code
-3. Set up all configurations
+3. Set up all configurations and symlinks
+4. Configure your shell environment
 
 ## What's Included
 
