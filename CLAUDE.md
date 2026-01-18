@@ -8,6 +8,7 @@ This is a personal dotfiles repository for managing configuration files across m
 - Git configuration (`gitconfig`)
 - SSH configuration (`ssh/config`)
 - Zsh shell configuration (`zsh/`)
+- Starship prompt configuration (`starship/`)
 - Claude Code settings and customizations (`claude/`)
 
 ## Setup and Installation
@@ -36,6 +37,13 @@ The `zsh/` directory contains a modular shell configuration:
 - **private.zsh**: Optional file for machine-specific settings (not tracked in git)
 
 The setup uses `.zshenv` as an entry point that sources the dotfiles configuration, keeping all actual configuration in the repository.
+
+### Starship Configuration
+The `starship/` directory contains prompt customization:
+- **starship.toml**: Starship prompt configuration
+- Uses `STARSHIP_CONFIG` environment variable (set in `environment.zsh`) instead of symlinking
+- Minimal configuration with sensible defaults - customize as needed
+- Unspecified settings automatically use Starship's built-in defaults
 
 ### Claude Configuration
 The `claude/` directory contains Claude Code customizations:

@@ -3,6 +3,9 @@
 # PATH
 export PATH="$HOME/.local/bin:$PATH"
 
+# Starship prompt configuration
+export STARSHIP_CONFIG="$HOME/dotfiles/starship/starship.toml"
+
 # History
 HISTFILE=~/.zsh_history
 HISTSIZE=10000

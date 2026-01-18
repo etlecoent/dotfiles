@@ -1,0 +1,23 @@
+# Starship Configuration
+# Customize as needed - unspecified settings use defaults
+
+# Minimal prompt timeout
+command_timeout = 500
+
+# Add newline between prompts for readability
+add_newline = true
+
+# Directory module - show current path
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+
+# Git branch
+[git_branch]
+symbol = "🌿 "
+
+# Git status
+[git_status]
+ahead = "⇡${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+behind = "⇣${count}"
