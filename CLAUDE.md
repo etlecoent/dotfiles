@@ -75,7 +75,6 @@ The `claude/` directory contains Claude Code customizations:
 - GitHub SSH key: Uses `~/.ssh/id_github` for github.com connections
 - Setup script automatically generates the SSH key if not present (ed25519)
 - Keychain integration for automatic SSH key loading (configured in zshrc)
-- Supports automatic key addition to GitHub via GitHub CLI (`gh`) if available
 
 ## Important Notes
 

@@ -47,19 +47,8 @@ else
     echo "Add this key to your GitHub account:"
     echo "https://github.com/settings/ssh/new"
     echo ""
-
-    # Try to add via GitHub CLI if available
-    if command -v gh &> /dev/null; then
-        echo "GitHub CLI detected. Would you like to add the key automatically? (y/n)"
-        read -r response
-        if [[ "$response" =~ ^[Yy]$ ]]; then
-            gh ssh-key add ~/.ssh/id_github.pub --title "$(hostname)-$(date +%Y%m%d)"
-            echo "SSH key added to GitHub!"
-        fi
-    else
-        echo "Press Enter once you've added the key to GitHub..."
-        read -r
-    fi
+    echo "Press Enter once you've added the key to GitHub..."
+    read -r
 fi
 
 echo ""

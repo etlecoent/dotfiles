@@ -17,7 +17,7 @@ This will **automatically**:
 4. Set up all configurations and symlinks
 5. Configure your shell environment
 
-**Note:** When generating a new SSH key, you'll be prompted to add it to your GitHub account. You can do this manually or automatically if you have GitHub CLI (`gh`) installed.
+**Note:** When generating a new SSH key, you'll be prompted to add it to your GitHub account manually.
 
 ## What's Included
 
