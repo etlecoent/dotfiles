@@ -1,0 +1,23 @@
+# Zsh Configuration
+# Sourced from ~/.zshenv
+
+# Get the directory where this file is located
+ZSHDIR="${HOME}/dotfiles/zsh"
+
+# Source modular configuration files
+source "${ZSHDIR}/environment.zsh"
+source "${ZSHDIR}/aliases.zsh"
+source "${ZSHDIR}/functions.zsh"
+
+# Source private configuration if it exists (not tracked in git)
+[ -f "${ZSHDIR}/private.zsh" ] && source "${ZSHDIR}/private.zsh"
+
+# SSH Key Management with Keychain
+if command -v keychain &> /dev/null; then
+    eval "$(keychain --eval --quiet id_github)"
+fi
+
+# Starship Prompt (initialize at the end)
+if command -v starship &> /dev/null; then
+    eval "$(starship init zsh)"
+fi
