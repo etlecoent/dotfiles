@@ -12,7 +12,7 @@ USAGE=$(echo "$input" | jq '.context_window.current_usage')
 # Create progress bar
 if [ "$USAGE" != "null" ]; then
     # Calculate current context from current_usage fields
-    current_tokens=$(echo "$USAGE" | jq '.input_tokens + .cache_creation_input_tokens + .cache_read_input_tokens')
+    current_tokens=$(echo "${USAGE}" | jq '.input_tokens + .cache_creation_input_tokens + .cache_read_input_tokens')
     percent_used=$((current_tokens * 100 / CONTEXT_SIZE))
 else
     percent_used=0
@@ -24,15 +24,19 @@ bar=""
 for ((i=0; i<filled; i++)); do bar+="█"; done
 for ((i=0; i<empty; i++)); do bar+="░"; done
 
-CONTEXT="$bar ${percent_used}%"
+CONTEXT="${bar} ${percent_used}%"
 
 # Show git branch if in a git repo
 GIT_BRANCH=""
 if git rev-parse --git-dir > /dev/null 2>&1; then
-    branch=$(git branch --show-current 2>/dev/null)
+    branch=$(git branch --show-current 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)
     if [ -n "$branch" ]; then
-        GIT_BRANCH=" | 🌿 $branch"
+        if ! git diff --quiet || ! git diff --cached --quiet || [ -n "$(git ls-files --others --exclude-standard)" ]; then
+            GIT_BRANCH=" | 🌿 ${branch}[!]"
+        else
+            GIT_BRANCH=" | 🌿 ${branch}"
+        fi
     fi
 fi
 
-echo "📦 $VERSION | 🤖 $MODEL | 🧠 $CONTEXT | 📁 ${CURRENT_DIR##*/}$GIT_BRANCH"
+echo "📦 ${VERSION} | 🤖 ${MODEL} | 🧠 ${CONTEXT} | 📁 ${CURRENT_DIR##*/}${GIT_BRANCH}"
