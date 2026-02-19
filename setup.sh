@@ -10,12 +10,9 @@ else
 fi
 
 echo ""
-echo "==> Installing Keychain (requires sudo)..."
-if command -v keychain &> /dev/null; then
-    echo "Keychain already installed"
-else
-    sudo apt install -y keychain
-fi
+echo "==> Installing system dependencies (requires sudo)..."
+sudo apt update
+sudo apt install -y libatomic1 keychain
 
 echo ""
 echo "==> Installing Claude Code..."
@@ -23,6 +20,37 @@ if command -v claude &> /dev/null; then
     echo "Claude Code already installed"
 else
     curl -fsSL https://claude.ai/install.sh | bash
+fi
+
+echo ""
+echo "==> Installing nvm (Node Version Manager)..."
+if [ -d ~/.nvm ]; then
+    echo "nvm already installed"
+else
+    PROFILE=/dev/null curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+fi
+
+echo ""
+echo "==> Installing Node.js LTS via nvm..."
+export NVM_DIR="$HOME/.nvm"
+# shellcheck source=/dev/null
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+if command -v nvm &> /dev/null; then
+    nvm install --lts
+    nvm alias default 'lts/*'
+    echo "Node.js LTS installed: $(node --version)"
+else
+    echo "Warning: nvm not available, skipping Node.js installation"
+fi
+
+echo ""
+echo "==> Installing Playwright CLI..."
+if command -v playwright-cli &> /dev/null; then
+    echo "Playwright CLI already installed"
+else
+    npm install -g @playwright/cli@latest
+    playwright-cli install --skills
+    npx playwright install-deps chromium
 fi
 
 echo ""
@@ -56,7 +84,6 @@ echo "==> Setting up dotfiles..."
 
 # Create .zshenv to source zsh configuration
 cat > ~/.zshenv << 'EOF'
-# Source zsh configuration from dotfiles
 source "$HOME/dotfiles/zsh/zshrc"
 EOF
 

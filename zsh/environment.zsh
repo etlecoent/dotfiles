@@ -3,6 +3,18 @@
 # PATH
 export PATH="$HOME/.local/bin:$PATH"
 
+# Node Version Manager (nvm)
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# Auto-load node version (use .nvmrc if present, otherwise use default)
+if [ -f .nvmrc ]; then
+  nvm use > /dev/null 2>&1
+else
+  nvm use default --silent > /dev/null 2>&1
+fi
+
 # Starship prompt configuration
 export STARSHIP_CONFIG="$HOME/dotfiles/starship/starship.toml"
 

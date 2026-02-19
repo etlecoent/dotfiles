@@ -30,9 +30,10 @@ bash setup.sh
 ### What Gets Installed
 
 The setup script automatically installs:
+- **System dependencies** - libatomic1, keychain (requires sudo)
 - **Starship** - Prompt customization
-- **Keychain** - SSH key management (requires sudo)
 - **Claude Code** - AI coding assistant
+- **nvm** - Node Version Manager for managing Node.js versions
 
 And creates:
 - SSH key for GitHub (`~/.ssh/id_github`) if not present
@@ -44,12 +45,19 @@ And creates:
 ### Zsh Configuration
 The `zsh/` directory contains a modular shell configuration:
 - **zshrc**: Main configuration file (sourced by `~/.zshenv`)
-- **environment.zsh**: Shell options, history settings, and completion
+- **environment.zsh**: Shell options, history settings, completion, and nvm initialization
 - **aliases.zsh**: Command aliases (git, navigation, safety)
 - **functions.zsh**: Utility functions (mkcd, extract, ff, fd)
 - **private.zsh**: Optional file for machine-specific settings (not tracked in git)
 
 The setup uses `.zshenv` as an entry point that sources the dotfiles configuration, keeping all actual configuration in the repository.
+
+### Node Version Manager (nvm)
+- Installed to `~/.nvm` during setup
+- Initialized in `environment.zsh` to load early in shell startup
+- Automatically activates default Node version (or `.nvmrc` version if present)
+- Provides `nvm` command for installing and managing Node.js versions
+- Includes bash completion for nvm commands
 
 ### Starship Configuration
 The `starship/` directory contains prompt customization:
