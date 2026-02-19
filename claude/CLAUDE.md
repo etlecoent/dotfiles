@@ -1,20 +1,12 @@
+# The environment
+- Keep in mind you are running inside WSL on a ubuntu distribution
+
 # Development Guidelines
 
 ## Communication Style
-- Be concise and direct
-- Stay formal but natural - avoid excessive formality
+- In all interactions, be extremely concise, direct and sacrifice grammar for the sake of concision
+- Avoid excessive formality
 - Get straight to the point
-
-## Project Context
-Primary focus areas:
-- Web applications (frontend/backend)
-- Data science / ML
-- DevOps / Infrastructure
-
-## Tech Stack
-- JavaScript/TypeScript (Node, React, etc.)
-- Python (Django, Flask, FastAPI, etc.)
-- Other languages as needed
 
 ## Code Quality
 
@@ -54,11 +46,12 @@ Primary focus areas:
 
 ### Commits
 - Use conventional commit format: `feat:`, `fix:`, `refactor:`, `docs:`, etc.
-- Keep commits atomic and focused on single logical changes
-- Always run tests before committing
-- Ensure tests pass before making commits
+- Keep commits atomic and focused on single logical changes. Group commits by files if necessary.
 
 ### Changes
 - Only modify what's necessary
 - Don't add unsolicited refactoring or "improvements"
 - Stay focused on the requested task
+
+### Plans
+- At the end of each plan, give a list of unresolved questions to answer, if any. Make the questions extremely concise. Sacrifice grammar for the sake of concision.
