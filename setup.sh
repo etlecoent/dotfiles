@@ -54,6 +54,24 @@ else
 fi
 
 echo ""
+echo "==> Installing uv (Python package manager)..."
+if command -v uv &> /dev/null; then
+    echo "uv already installed"
+else
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+fi
+
+echo ""
+echo "==> Installing Python LTS via uv..."
+if command -v uv &> /dev/null || [ -f "$HOME/.local/bin/uv" ]; then
+    export PATH="$HOME/.local/bin:$PATH"
+    uv python install
+    echo "Python installed: $(uv python find)"
+else
+    echo "Warning: uv not available, skipping Python installation"
+fi
+
+echo ""
 echo "==> Setting up SSH key for GitHub..."
 mkdir -p ~/.ssh
 chmod 700 ~/.ssh
