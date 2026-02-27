@@ -15,6 +15,14 @@ else
   nvm use default --silent > /dev/null 2>&1
 fi
 
+# uv shell completion
+if command -v uv &> /dev/null; then
+    eval "$(uv generate-shell-completion zsh)"
+fi
+if command -v uvx &> /dev/null; then
+    eval "$(uvx --generate-shell-completion zsh)"
+fi
+
 # Starship prompt configuration
 export STARSHIP_CONFIG="$HOME/dotfiles/starship/starship.toml"
 
