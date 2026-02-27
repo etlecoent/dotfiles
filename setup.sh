@@ -12,7 +12,7 @@ fi
 echo ""
 echo "==> Installing system dependencies (requires sudo)..."
 sudo apt update
-sudo apt install -y libatomic1 keychain
+sudo apt install -y libatomic1 keychain libxml2-dev libxslt1-dev build-essential
 
 echo ""
 echo "==> Installing Claude Code..."
