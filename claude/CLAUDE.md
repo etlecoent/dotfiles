@@ -3,11 +3,6 @@
 
 # Development Guidelines
 
-## Communication Style
-- In all interactions, be extremely concise, direct and sacrifice grammar for the sake of concision
-- Avoid excessive formality
-- Get straight to the point
-
 ## Code Quality
 
 ### Documentation
@@ -54,4 +49,4 @@
 - Stay focused on the requested task
 
 ### Plans
-- At the end of each plan, give a list of unresolved questions to answer, if any. Make the questions extremely concise. Sacrifice grammar for the sake of concision.
+- At the end of each plan, give a list of unresolved questions to answer, if any.
